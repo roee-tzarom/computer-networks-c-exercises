@@ -1,25 +1,31 @@
 # C Toolchain Starter
 
-A minimal C/CMake exercise used to verify a working compiler and build setup. The current program in `main.c` prints `Hello, World!`; no socket or networking code is present yet.
+A compact C11 project for checking a compiler, linker and CMake setup. The program has one entry point and prints `Hello, World!`.
+
+## Why keep this project?
+
+Before working on larger native programs, it is useful to have a known-good build target. This repository is that baseline: `main.c` contains the complete program and `CMakeLists.txt` describes how to compile it. There are no libraries to install, configuration files to prepare or services to start.
 
 ## Build and run
+
+You need a C compiler and CMake 4.1 or newer, as required by the current `CMakeLists.txt`.
 
 ```bash
 cmake -S . -B build
 cmake --build build
 ```
 
-Run the generated executable from `build/` (`main` on Unix-like systems or `main.exe` on Windows, subject to the CMake generator). This repository is a starter project rather than a completed networking application.
+Run the generated `untitled` executable from the build directory (`untitled.exe` on Windows). The exact location depends on the CMake generator. A successful run prints one line:
 
+```text
+Hello, World!
+```
 
-## Repository walkthrough
+## Repository map
 
-`main.c` is the complete application entry point. The CMake configuration declares the executable and delegates compiler-specific build files to CMake. This is useful for checking that a C compiler, linker and CMake installation are working before starting larger socket assignments. There is no dependency manager, runtime configuration or input file.
+| File | Purpose |
+| --- | --- |
+| `main.c` | Application entry point and terminal output |
+| `CMakeLists.txt` | C11 build configuration and executable target |
 
-## A reproducible check
-
-After building, run the executable and expect a single `Hello, World!` line. If the build fails, check the C compiler selected by CMake and the generator-specific location of the executable. The `build/` directory is generated output and can be recreated with the commands above.
-
-## Scope and next steps
-
-Despite the repository name, this snapshot contains a toolchain starter only. It does not open sockets, implement a protocol, or include a test suite. For actual networking code in this GitHub account, see the [Python TCP sliding-window exercise](https://github.com/roee-tzarom/computer-networks-python-exercises) and [network simulator](https://github.com/roee-tzarom/reliable-udp-network-simulator). Keeping that distinction explicit makes the repository easier to evaluate accurately.
+This is a toolchain starter, not a network protocol implementation. For socket and protocol work, see the [TCP sliding-window transfer](https://github.com/roee-tzarom/computer-networks-python-exercises) and [reliable UDP network simulator](https://github.com/roee-tzarom/reliable-udp-network-simulator).
